@@ -1,0 +1,215 @@
+:root {
+  --primary-color: #4f94cd;
+  --primary-dark: #3b82f6;
+  --secondary-color: #f97316;
+  --accent-color: #8b5cf6;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --background-light: #f9fafb;
+  --background-dark: #f3f4f6;
+  
+  /* Nursery-friendly colors */
+  --nursery-blue: #4f94cd;
+  --nursery-green: #10b981;
+  --nursery-yellow: #fbbf24;
+  --nursery-red: #ef4444;
+  --nursery-purple: #8b5cf6;
+  --nursery-orange: #f97316;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--nursery-blue), var(--nursery-purple));
+  background-image: url('https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-1.2.1&auto=format&fit=crop&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(79, 148, 205, 0.92), rgba(139, 92, 246, 0.92));
+  z-index: 1;
+}
+
+.hero-gradient > * {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #0ea271;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading Animation */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.lesson-content h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.lesson-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.lesson-content ul, .lesson-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.lesson-content li {
+  margin-bottom: 0.5rem;
+}
+
+.lesson-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* Animation for generated content */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* AI Assistant animations */
+.ai-thinking {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 20px;
+}
+
+.ai-thinking div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--nursery-blue);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.ai-thinking div:nth-child(1) {
+  left: 6px;
+  animation: ai-thinking1 0.6s infinite;
+}
+
+.ai-thinking div:nth-child(2) {
+  left: 6px;
+  animation: ai-thinking2 0.6s infinite;
+}
+
+.ai-thinking div:nth-child(3) {
+  left: 26px;
+  animation: ai-thinking2 0.6s infinite;
+}
+
+.ai-thinking div:nth-child(4) {
+  left: 45px;
+  animation: ai-thinking3 0.6s infinite;
+}
+
+@keyframes ai-thinking1 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ai-thinking3 {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+@keyframes ai-thinking2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(19px, 0); }
+}
+
+/* Admin panel toggle switches */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #3B82F6;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #3B82F6;
+}
+
+.toggle-label {
+  transition: background-color 0.3s ease;
+}
