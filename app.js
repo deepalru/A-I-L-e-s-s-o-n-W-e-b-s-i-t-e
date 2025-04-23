@@ -11,9 +11,11 @@ function App() {
             <Route path="/generator" element={<GeneratorPage data-id="gw7gsu84c" data-path="app.js" />} data-id="do3v4gayi" data-path="app.js" />
             <Route path="/history" element={<HistoryPage data-id="3s52n6iix" data-path="app.js" />} data-id="btuaiw21l" data-path="app.js" />
             <Route path="/admin" element={<AdminPage data-id="admin-page" data-path="app.js" />} data-id="50r2k4ejs" data-path="app.js" />
+            <Route path="/profile" element={<ProfilePage data-id="profile-page" data-path="app.js" />} data-id="jd83nfh2r" data-path="app.js" />
           </Routes>
         </main>
         <Footer data-id="go10blhxt" data-path="app.js" />
+        <CreateTestAdmin data-id="wav4cgatj" data-path="app.js" />
       </div>
     </BrowserRouter>);
 
