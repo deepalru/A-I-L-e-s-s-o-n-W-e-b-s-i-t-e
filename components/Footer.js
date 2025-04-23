@@ -35,24 +35,24 @@ function Footer() {
             </h3>
             <ul className="space-y-3" data-id="jm41b2ibf" data-path="components/Footer.js">
               <li data-id="wapez2z10" data-path="components/Footer.js">
-                <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="bew7v7e2z" data-path="components/Footer.js">
+                <Link to="/generator" className="text-gray-300 hover:text-white text-sm" data-id="bew7v7e2z" data-path="components/Footer.js">
                   Activity Creator
-                </a>
+                </Link>
               </li>
               <li data-id="163iol5ib" data-path="components/Footer.js">
-                <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="zacz1sbty" data-path="components/Footer.js">
-                  Developmental Areas
-                </a>
+                <Link to="/subscription-plans" className="text-gray-300 hover:text-white text-sm" data-id="zacz1sbty" data-path="components/Footer.js">
+                  <i className="fas fa-crown mr-1" data-id="589q5k5nc" data-path="components/Footer.js"></i> Subscription Plans
+                </Link>
               </li>
               <li data-id="7sfl2kgo5" data-path="components/Footer.js">
-                <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="7jdyot5rk" data-path="components/Footer.js">
-                  Age-Appropriate Activities
-                </a>
+                <Link to="/history" className="text-gray-300 hover:text-white text-sm" data-id="7jdyot5rk" data-path="components/Footer.js">
+                  Activity Library
+                </Link>
               </li>
               <li data-id="07gqwxo2r" data-path="components/Footer.js">
-                <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="9qd20v3yz" data-path="components/Footer.js">
-                  Caregiver Resources
-                </a>
+                <Link to="/profile" className="text-gray-300 hover:text-white text-sm" data-id="9qd20v3yz" data-path="components/Footer.js">
+                  <i className="fas fa-user mr-1" data-id="1pynghmuy" data-path="components/Footer.js"></i> User Profile
+                </Link>
               </li>
             </ul>
           </div>
@@ -92,27 +92,27 @@ function Footer() {
           
           <div className="col-span-1" data-id="fzz5no0jv" data-path="components/Footer.js">
             <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase mb-4" data-id="jo09t9rnq" data-path="components/Footer.js">
-              Support
+              Subscription
             </h3>
             <ul className="space-y-3" data-id="7atg4f8nq" data-path="components/Footer.js">
               <li data-id="234kaird6" data-path="components/Footer.js">
-                <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="jv8403wux" data-path="components/Footer.js">
-                  Help Center
-                </a>
+                <Link to="/subscription-plans" className="text-gray-300 hover:text-white text-sm" data-id="jv8403wux" data-path="components/Footer.js">
+                  Pricing Plans
+                </Link>
               </li>
               <li data-id="mdw17pvas" data-path="components/Footer.js">
                 <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="f1sjnd3uw" data-path="components/Footer.js">
-                  Contact Us
+                  Usage Restrictions
                 </a>
               </li>
               <li data-id="rb6ezcb3x" data-path="components/Footer.js">
                 <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="c1kajsefw" data-path="components/Footer.js">
-                  FAQ
+                  Renewal Options
                 </a>
               </li>
               <li data-id="egw1l6pj9" data-path="components/Footer.js">
                 <a href="#" className="text-gray-300 hover:text-white text-sm" data-id="ihks13ucn" data-path="components/Footer.js">
-                  Community
+                  Enterprise Solutions
                 </a>
               </li>
             </ul>

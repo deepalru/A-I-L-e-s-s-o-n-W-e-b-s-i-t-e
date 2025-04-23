@@ -8,7 +8,8 @@ function UserProfile({ isOpen, onClose }) {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState('');
   const [successMsg, setSuccessMsg] = React.useState('');
-  const [activeTab, setActiveTab] = React.useState('profile'); // 'profile' or 'password'
+  const [activeTab, setActiveTab] = React.useState('profile'); // 'profile', 'password', or 'subscription'
+  const [showSubscriptionManager, setShowSubscriptionManager] = React.useState(false);
 
   React.useEffect(() => {
     // Load user data when modal opens
@@ -166,6 +167,16 @@ function UserProfile({ isOpen, onClose }) {
                 <i className="fas fa-lock mr-2" data-id="j08j2folq" data-path="components/UserProfile.js"></i>
                 Change Password
               </button>
+              <button
+                onClick={() => setActiveTab('subscription')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'subscription' ?
+                'border-blue-500 text-blue-600' :
+                'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`} data-id="zu8gjhn13" data-path="components/UserProfile.js">
+
+                <i className="fas fa-credit-card mr-2" data-id="x22m12nd5" data-path="components/UserProfile.js"></i>
+                Subscription
+              </button>
             </nav>
           </div>
           
@@ -317,6 +328,74 @@ function UserProfile({ isOpen, onClose }) {
                 </button>
               </div>
             </form>
+          }
+          
+          {/* Subscription Tab */}
+          {activeTab === 'subscription' &&
+          <div className="space-y-6" data-id="judeqkd8i" data-path="components/UserProfile.js">
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200" data-id="vd17oo0jf" data-path="components/UserProfile.js">
+                <div className="flex justify-between items-center" data-id="oq44wk84g" data-path="components/UserProfile.js">
+                  <div data-id="dfe98b9q4" data-path="components/UserProfile.js">
+                    <h4 className="text-lg font-medium text-gray-900" data-id="qvzmstawh" data-path="components/UserProfile.js">Your Subscription</h4>
+                    <p className="text-gray-600" data-id="hq76sqmdw" data-path="components/UserProfile.js">
+                      {getUserSubscription()?.planId === 'free' ?
+                    'Free Plan' :
+                    getSubscriptionPlanDetails(getUserSubscription()?.planId).name + ' Plan'}
+                    </p>
+                  </div>
+                  <span
+                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  getUserSubscription()?.status === 'active' ?
+                  'bg-green-100 text-green-800' :
+                  'bg-yellow-100 text-yellow-800'}`
+                  } data-id="fs7j3t6vf" data-path="components/UserProfile.js">
+
+                    {getUserSubscription()?.status === 'active' ? 'Active' : 'Canceled'}
+                  </span>
+                </div>
+              </div>
+              
+              {getUserSubscription()?.planId === 'free' ?
+            <div className="bg-blue-50 border border-blue-100 rounded-lg p-4" data-id="nztx0jbiy" data-path="components/UserProfile.js">
+                  <div className="flex items-start" data-id="e46skzovq" data-path="components/UserProfile.js">
+                    <div className="flex-shrink-0" data-id="b97y8vzsw" data-path="components/UserProfile.js">
+                      <i className="fas fa-info-circle text-blue-500 mt-0.5" data-id="j66vf2nd9" data-path="components/UserProfile.js"></i>
+                    </div>
+                    <div className="ml-3" data-id="asqaj8fb4" data-path="components/UserProfile.js">
+                      <h3 className="text-sm font-medium text-blue-800" data-id="1g6w91vyu" data-path="components/UserProfile.js">Free Plan Limitations</h3>
+                      <div className="mt-2 text-sm text-blue-700" data-id="3vmjkgj1w" data-path="components/UserProfile.js">
+                        <p data-id="nbecihc3r" data-path="components/UserProfile.js">Your free plan includes 5 activities per day. Upgrade to create unlimited activities and access premium features.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div> :
+
+            <div className="bg-gray-100 border border-gray-200 rounded-lg p-4" data-id="3y3bmks8j" data-path="components/UserProfile.js">
+                  <p className="text-gray-700 text-sm" data-id="8c466u5tw" data-path="components/UserProfile.js">
+                    {getUserSubscription()?.billingCycle === 'annual' ?
+                <>You're subscribed to the annual plan with {ANNUAL_DISCOUNT}% savings.</> :
+
+                <>You're billed monthly for your subscription.</>
+                }
+                  </p>
+                </div>
+            }
+              
+              <button
+              onClick={() => setShowSubscriptionManager(true)}
+              className="w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-id="7cfiqp5ni" data-path="components/UserProfile.js">
+
+                Manage Subscription
+              </button>
+            </div>
+          }
+          
+          {/* Subscription Manager Modal */}
+          {showSubscriptionManager &&
+          <SubscriptionManager
+            isOpen={showSubscriptionManager}
+            onClose={() => setShowSubscriptionManager(false)} data-id="01cre3pqf" data-path="components/UserProfile.js" />
+
           }
         </div>
       </div>

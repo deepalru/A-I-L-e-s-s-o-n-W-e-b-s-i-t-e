@@ -9,6 +9,7 @@ function Navbar() {
   const [authModalMode, setAuthModalMode] = React.useState('login');
   const [showUserProfile, setShowUserProfile] = React.useState(false);
   const [showAISettings, setShowAISettings] = React.useState(false);
+  const [showSubscriptionManager, setShowSubscriptionManager] = React.useState(false);
 
   React.useEffect(() => {
     // Check if user is logged in
@@ -106,6 +107,26 @@ function Navbar() {
 
                 My Activities
               </Link>
+              <Link
+                to="/profile"
+                className={`${
+                location.pathname === '/profile' ?
+                'border-blue-500 text-gray-900' :
+                'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`
+                } data-id="per4gmdx5" data-path="components/Navbar.js">
+                <i className="fas fa-user mr-1" data-id="gpsqejwmn" data-path="components/Navbar.js"></i>
+                Profile
+              </Link>
+              <Link
+                to="/subscription-plans"
+                className={`${
+                location.pathname === '/subscription-plans' ?
+                'border-blue-500 text-gray-900' :
+                'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`
+                } data-id="6tnrh7mcf" data-path="components/Navbar.js">
+                <i className="fas fa-crown mr-1" data-id="n4yqy26x4" data-path="components/Navbar.js"></i>
+                Pricing
+              </Link>
               {user && hasPermission(PERMISSIONS.VIEW_ADMIN_PANEL) &&
               <Link
                 to="/admin"
@@ -175,6 +196,25 @@ function Navbar() {
                     </ReactRouterDOM.Link>
                 }
                     
+                    <Link
+                  to="/subscription-plans"
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setShowUserDropdown(false)} data-id="t3uxctwv6" data-path="components/Navbar.js">
+                      <i className="fas fa-crown mr-2 text-gray-500" data-id="ln3k7ytye" data-path="components/Navbar.js"></i> Subscription Plans
+                    </Link>
+                    <button
+                  onClick={() => {
+                    const userSub = getUserSubscription();
+                    if (userSub) {
+                      setShowSubscriptionManager(true);
+                      setShowUserDropdown(false);
+                    } else {
+                      window.location.href = '/subscription-plans';
+                    }
+                  }}
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-id="w3rocys7s" data-path="components/Navbar.js">
+                      <i className="fas fa-credit-card mr-2 text-gray-500" data-id="3d01ycw8s" data-path="components/Navbar.js"></i> Manage Subscription
+                    </button>
                     <button
                   onClick={handleLogout}
                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-id="4u2qf9x3e" data-path="components/Navbar.js">
@@ -256,6 +296,28 @@ function Navbar() {
 
               My Activities
             </Link>
+            <Link
+            to="/profile"
+            className={`${
+            location.pathname === '/profile' ?
+            'bg-blue-50 border-blue-500 text-blue-700' :
+            'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`
+            }
+            onClick={() => setIsMenuOpen(false)} data-id="mvywhe9er" data-path="components/Navbar.js">
+              <i className="fas fa-user mr-2" data-id="yiksretst" data-path="components/Navbar.js"></i>
+              Profile
+            </Link>
+            <Link
+            to="/subscription-plans"
+            className={`${
+            location.pathname === '/subscription-plans' ?
+            'bg-blue-50 border-blue-500 text-blue-700' :
+            'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`
+            }
+            onClick={() => setIsMenuOpen(false)} data-id="tnv1ffm71" data-path="components/Navbar.js">
+              <i className="fas fa-crown mr-2" data-id="jo11hatd3" data-path="components/Navbar.js"></i>
+              Pricing
+            </Link>
             
             {user && hasPermission(PERMISSIONS.VIEW_ADMIN_PANEL) &&
           <Link
@@ -306,6 +368,25 @@ function Navbar() {
                       </button>
               }
                   
+                  <Link
+                to="/subscription-plans"
+                className="block w-full text-left pl-3 pr-4 py-2 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700"
+                onClick={() => setIsMenuOpen(false)} data-id="2fuua1v3p" data-path="components/Navbar.js">
+                    <i className="fas fa-crown mr-2" data-id="anh9pftro" data-path="components/Navbar.js"></i> Subscription Plans
+                  </Link>
+                  <button
+                onClick={() => {
+                  const userSub = getUserSubscription();
+                  if (userSub) {
+                    setShowSubscriptionManager(true);
+                    setIsMenuOpen(false);
+                  } else {
+                    window.location.href = '/subscription-plans';
+                  }
+                }}
+                className="block w-full text-left pl-3 pr-4 py-2 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" data-id="qwxjhslq1" data-path="components/Navbar.js">
+                    <i className="fas fa-credit-card mr-2" data-id="n4nodrlf3" data-path="components/Navbar.js"></i> Manage Subscription
+                  </button>
                   <button
                 onClick={handleLogout}
                 className="block w-full text-left pl-3 pr-4 py-2 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" data-id="9bzbcf63r" data-path="components/Navbar.js">
@@ -360,6 +441,11 @@ function Navbar() {
         isOpen={showAISettings}
         onClose={() => setShowAISettings(false)}
         onSave={handleSaveAISettings} data-id="12vhmzd2y" data-path="components/Navbar.js" />
+        
+      {/* Subscription Manager Modal */}
+      <SubscriptionManager
+        isOpen={showSubscriptionManager}
+        onClose={() => setShowSubscriptionManager(false)} data-id="9n66cfcyi" data-path="components/Navbar.js" />
 
     </nav>);
 

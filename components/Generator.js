@@ -7,6 +7,8 @@ function Generator({ onGenerateLesson }) {
   const [error, setError] = React.useState('');
   const [isProcessingAI, setIsProcessingAI] = React.useState(false);
   const [aiResponse, setAIResponse] = React.useState('');
+  const [showUpgradePrompt, setShowUpgradePrompt] = React.useState(false);
+  const [upgradeMessage, setUpgradeMessage] = React.useState('');
 
   const canGenerate = subject && grade && duration;
 
@@ -43,6 +45,24 @@ function Generator({ onGenerateLesson }) {
       return;
     }
 
+    // Check if user is logged in
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+      setError('Please log in to generate activities');
+      return;
+    }
+
+    // Check if user has reached free tier limits
+    if (checkFreeTierLimits()) {
+      setUpgradeMessage('You have reached your daily limit of free generations.');
+      setShowUpgradePrompt(true);
+      return;
+    }
+
+    // Get current usage for display in potential upgrade prompt
+    const dailyLimit = getDailyActivityLimit();
+    const usedToday = getTodayActivityCount();
+
     setIsLoading(true);
     setError('');
     setAIResponse('');
@@ -73,6 +93,18 @@ function Generator({ onGenerateLesson }) {
       // Add a source flag to indicate if external AI was used
       if (useExternalAI) {
         lessonPlan.source = 'external-ai';
+      }
+
+      // Log activity creation for subscription tracking
+      const result = logActivityCreation();
+
+      // Check if we should prompt the user to upgrade
+      if (result && result.shouldPromptUpgrade) {
+        setUpgradeMessage(result.message);
+        // We'll show the upgrade prompt after displaying the generated lesson
+        setTimeout(() => {
+          setShowUpgradePrompt(true);
+        }, 1500);
       }
 
       onGenerateLesson(lessonPlan);
@@ -151,6 +183,17 @@ function Generator({ onGenerateLesson }) {
         </button>
       </div>
     </div>
+    
+    {/* Subscription Upgrade Prompt */}
+    <UpgradePrompt
+        isOpen={showUpgradePrompt}
+        onClose={() => setShowUpgradePrompt(false)}
+        message={upgradeMessage}
+        currentUsage={{
+          used: typeof getTodayActivityCount === 'function' ? getTodayActivityCount() : 0,
+          limit: typeof getDailyActivityLimit === 'function' ? getDailyActivityLimit() : 5
+        }} data-id="242u8icu6" data-path="components/Generator.js" />
+
     </>);
 
 }
