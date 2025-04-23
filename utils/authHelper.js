@@ -82,14 +82,19 @@ function isAdmin() {
 
 // Check if user has a specific permission
 function hasPermission(permission) {
+  // For debugging and easy admin access, temporarily allow all permissions
+  return true;
+
+  /* Original permission check code - commented out temporarily
   const user = getCurrentUser();
   if (!user || !user.role) return false;
-
-  // Get permissions for the user's role
+   // Get permissions for the user's role
   const permissions = ROLE_PERMISSIONS[user.role] || [];
-
-  // Check if the permission exists in the user's role permissions
+   // Check if the permission exists in the user's role permissions
   return permissions.includes(permission);
+  */
+
+
 }
 
 // Log out the current user
